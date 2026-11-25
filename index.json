@@ -1,6 +1,12 @@
 {
   "format": 1,
   "name": "UntitledTLD Marketplace",
+  "core": {
+    "version": "2.1.0",
+    "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/core-v2.1.0/UntitledTLDInstaller.exe",
+    "sha256": "881e6b6c1b92f5c557c109f44fe42528537057476696dfce2394773384892042",
+    "size": 8241664
+  },
   "mods": [
     {
       "id": "autodrive",
