@@ -20,7 +20,7 @@ namespace DashboardHUD
     {
         public override string ID { get { return "dashboardhud"; } }
         public override string Name { get { return "Dashboard HUD"; } }
-        public override string Version { get { return "1.0.1"; } }
+        public override string Version { get { return "1.0.2"; } }
         public override string MinLoaderVersion { get { return "1.1.0"; } }
         public override string Author { get { return "UntitledTLD"; } }
 
@@ -51,7 +51,7 @@ namespace DashboardHUD
 
         public override void OnLoad()
         {
-            style = Settings.Choice("Style", "Box", Styles, "How the dashboard looks.");
+            style = Settings.Choice("Style", "Analog", Styles, "How the dashboard looks.");
             color = Settings.Choice("Color", "Orange", Colors, "Accent color.");
             units = Settings.Choice("Units", "km/h", new[] { "km/h", "mph" }, "Speed and distance units.");
             position = Settings.Choice("Position", "Bottom right", Positions, "Where on the screen it sits.");
