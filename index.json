@@ -2,10 +2,10 @@
   "format": 1,
   "name": "UntitledTLD Marketplace",
   "core": {
-    "version": "2.1.1",
-    "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/core-v2.1.1/UntitledTLDInstaller.exe",
-    "sha256": "014695c34a826f080cb29de349ea48dceb3991474c85e955f1fd3ec104340aaa",
-    "size": 8241664
+    "version": "2.1.2",
+    "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/core-v2.1.2/UntitledTLDInstaller.exe",
+    "sha256": "eac1547e80ab6639396a3276b273577a1290321335d4bf3bbe125d07d03e070d",
+    "size": 8242176
   },
   "mods": [
     {
