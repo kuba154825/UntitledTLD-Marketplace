@@ -12,7 +12,7 @@
       "id": "autodrive",
       "name": "AutoDrive",
       "author": "UntitledTLD",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minLoader": "1.1.0",
       "description": "Drives the car along the roads by itself: brakes for corners, swerves smoothly around rocks, backs up and tries again if it hits something. Can drive a registered car while you sit elsewhere. Start / stop with O or in the Manager (F10).",
       "tags": [
@@ -24,8 +24,8 @@
       "files": [
         {
           "path": "AutoDrive.dll",
-          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/autodrive-v1.0.0/AutoDrive.dll",
-          "sha256": "cf7e8f9d9822297ac83b35cc3a61582f1ce13fc805fd3b60f47fc76274886a4b",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/autodrive-v1.0.1/AutoDrive.dll",
+          "sha256": "71a7480b224e43073449e035154c6bfe2081e10b96d08a49b2fd045eb7f3f265",
           "size": 38400
         }
       ]

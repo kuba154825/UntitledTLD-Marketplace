@@ -29,7 +29,7 @@ namespace AutoDrive
     {
         public override string ID { get { return "autodrive"; } }
         public override string Name { get { return "AutoDrive"; } }
-        public override string Version { get { return "1.0.0"; } }
+        public override string Version { get { return "1.0.1"; } }
         public override string Author { get { return "UntitledTLD"; } }
         public override string MinLoaderVersion { get { return "1.1.0"; } }
 
@@ -73,6 +73,7 @@ namespace AutoDrive
         float lastAbs;
         LineRenderer pathLine;
         float[] offsets = new float[0];   // planned lateral offset per route sample
+        readonly Collider[] hits = new Collider[64];   // reused by the obstacle scan (no garbage every 0.1 s)
         const float SampleStep = 2f;      // metres between planning samples
         const int Samples = 100;          // 200 m of planning horizon (enough to stop from 140 km/h)
 
@@ -315,30 +316,45 @@ namespace AutoDrive
             float halfCar = CarHalfWidth();
             float vNowScan = car.RB != null ? Mathf.Abs(Vector3.Dot(car.RB.velocity, car.transform.forward)) : 0f;
             float corridor = SideLimit + halfCar + 1.5f;
-            var seen = new HashSet<Collider>();
             float s0 = route.CarS;
+            float halfLen = bodyHalfLength + 0.5f;     // the car touches it while its body passes
+            float gap = 0.5f + 0.012f * vNowScan;      // sideways safety gap, ~0.85 m at 100 km/h
+            var found = new HashSet<Collider>();
             for (float s = s0 + 1.5f; s < s0 + Samples * SampleStep && s < route.Length; s += 4f)
             {
                 Vector3 p, t; route.At(s + 2f, out p, out t);
                 var rot = Quaternion.LookRotation(t, Vector3.up);
-                // from 0.2 m above the road to 2 m: small rocks and big ones, not the road itself
+                var right = Vector3.Cross(Vector3.up, t).normalized;
+                // 1) anything in this 4 m slice of the corridor, from 0.2 m above the road to 2 m
+                //    (small rocks and big ones; not the road, not wires high above it)
                 var center = p + Vector3.up * 1.1f;
-                var half = new Vector3(corridor, 0.9f, 2.1f);
-                foreach (var col in Physics.OverlapBox(center, half, rot, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+                found.Clear();
+                int n = Physics.OverlapBoxNonAlloc(center, new Vector3(corridor, 0.9f, 2.1f), hits, rot, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                for (int i = 0; i < n; i++)
                 {
-                    if (col == null || !seen.Add(col) || IsIgnored(col)) continue;
-                    var b = col.bounds;
-                    if (b.max.y < p.y + 0.18f) continue;            // flat / below the axle line
-                    // where is it on the route?
-                    float os; float od;
-                    route.Project(b.center, s - 6f, s + 6f, out os, out od);
-                    float ext = Mathf.Max(b.extents.x, b.extents.z);
-                    // a big rock blocks the road for its whole length, plus the car's own half length.
-                    // Sideways: the car's real half width plus a safety gap that grows with speed.
-                    float halfLen = bodyHalfLength + 0.5f;
-                    float gap = 0.5f + 0.012f * vNowScan;   // ~0.85 m at 100 km/h
-                    obstacles.Add(new Obstacle { s = os, sMin = os - ext - halfLen, sMax = os + ext + halfLen,
-                        dMin = od - ext - halfCar - gap, dMax = od + ext + halfCar + gap, name = col.name });
+                    var col = hits[i];
+                    if (col == null || IsIgnored(col) || col.bounds.max.y < p.y + 0.18f) continue;
+                    found.Add(col);
+                }
+                if (found.Count == 0) continue;
+                // 2) where across the road is it REALLY? Thin upright boxes every 35 cm across the
+                //    corridor. The world-aligned bounding box of a slanted pole or power line can be
+                //    many metres wide; this measures only the space the object actually takes.
+                float occStart = 0f; bool inOcc = false; string what = null;
+                const float step = 0.35f;
+                for (float d = -corridor; d <= corridor + 0.001f; d += step)
+                {
+                    bool occ = false;
+                    int m = Physics.OverlapBoxNonAlloc(center + right * d, new Vector3(step * 0.5f, 0.9f, 2.0f), hits, rot, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                    for (int i = 0; i < m && !occ; i++) if (found.Contains(hits[i])) { occ = true; what = hits[i].name; }
+                    if (occ && !inOcc) { occStart = d; inOcc = true; }
+                    if ((!occ || d + step > corridor + 0.001f) && inOcc)
+                    {
+                        float occEnd = occ ? d : d - step;
+                        inOcc = false;
+                        obstacles.Add(new Obstacle { s = s + 2f, sMin = s - halfLen, sMax = s + 4f + halfLen,
+                            dMin = occStart - step * 0.5f - halfCar - gap, dMax = occEnd + step * 0.5f + halfCar + gap, name = what });
+                    }
                 }
             }
             // things it hit earlier (and didn't see coming): a 1 m block at that spot for 40 s
@@ -348,7 +364,6 @@ namespace AutoDrive
                 float ms, md;
                 route.Project(m.Key, s0 - 10f, s0 + Samples * SampleStep, out ms, out md);
                 if (ms < s0 - 5f) continue;
-                float halfLen = bodyHalfLength + 0.5f, gap = 0.5f + 0.012f * vNowScan;
                 obstacles.Add(new Obstacle { s = ms, sMin = ms - 1f - halfLen, sMax = ms + 1f + halfLen,
                     dMin = md - 1f - halfCar - gap, dMax = md + 1f + halfCar + gap, name = "hit earlier" });
             }
