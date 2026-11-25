@@ -6,6 +6,8 @@
 //
 // Features: spawn any item (with condition / full random), random vehicle, godmode, fly (noclip),
 // refuel everything nearby (fuel with each engine's own mix, oil, coolant), 5x liquid pouring.
+// 1.1: tabs + always-time (sunrise/day/afternoon/sunset/night), day speed, no sandstorms, gravity, slow
+// motion, super speed/jump, no fall damage, teleport, infinite fuel, no overheating, repair/flip/bring car (Extras.cs).
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,11 +21,11 @@ using UntitledLoader;
 
 namespace CheatMenu
 {
-    public class CheatMenuMod : Mod
+    public partial class CheatMenuMod : Mod
     {
         public override string ID { get { return "cheatmenu"; } }
         public override string Name { get { return "Cheat Menu"; } }
-        public override string Version { get { return "1.0.1"; } }
+        public override string Version { get { return "1.1.0"; } }
         public override string MinLoaderVersion { get { return "1.1.0"; } }
         public override string Author { get { return "UntitledTLD"; } }
 
@@ -80,6 +82,7 @@ namespace CheatMenu
             pourSetting = Settings.Slider("FastPourMultiplier", 5f, 1f, 20f, "How much faster liquids pour with Fast pour on.");
             ApplySettings();
             appPath = Path.Combine(Folder, "CheatMenuApp.exe");
+            LoadExtras();
 
             // keep the game updating while the external app has focus
             Application.runInBackground = true;
@@ -114,6 +117,7 @@ namespace CheatMenu
         public override void OnGameExit()
         {
             god = fly = fastPour = false;
+            ResetExtras();
             basePourSpeed = -1f; pourOwner = null;
         }
 
@@ -129,6 +133,7 @@ namespace CheatMenu
             if (god) ApplyGod(p);
             if (fly) ApplyFly(p);
             ApplyPour();
+            UpdateExtras();
         }
 
         static bool AppRunning() { return Process.GetProcessesByName("CheatMenuApp").Length > 0; }
@@ -356,7 +361,7 @@ namespace CheatMenu
             if (cmd == "ping") return "ok pong";
             if (cmd == "menu") { appOpen = a.Length > 1 && a[1] == "1"; return "ok menu " + (appOpen ? "open" : "closed"); }
             if (cmd == "state")
-                return "ok ready=" + (Game.IsReady ? 1 : 0) + " god=" + (god ? 1 : 0) + " fly=" + (fly ? 1 : 0) + " fastpour=" + (fastPour ? 1 : 0) + " key=" + menuKey;
+                return "ok ready=" + (Game.IsReady ? 1 : 0) + " god=" + (god ? 1 : 0) + " fly=" + (fly ? 1 : 0) + " fastpour=" + (fastPour ? 1 : 0) + " key=" + menuKey + ExtrasState();
             if (!Game.IsReady) return "err load a save first";
             switch (cmd)
             {
@@ -369,6 +374,8 @@ namespace CheatMenu
                 case "fastpour": fastPour = a[1] == "1"; return "ok fast pouring " + (fastPour ? "on (" + pourMultiplier + "x)" : "off");
                 case "refuel": return RefuelNearby();
             }
+            var extra = ExecuteExtra(cmd, a);
+            if (extra != null) return extra;
             return "err unknown command " + cmd;
         }
 
