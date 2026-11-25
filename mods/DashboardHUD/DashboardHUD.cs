@@ -20,7 +20,7 @@ namespace DashboardHUD
     {
         public override string ID { get { return "dashboardhud"; } }
         public override string Name { get { return "Dashboard HUD"; } }
-        public override string Version { get { return "1.0.0"; } }
+        public override string Version { get { return "1.0.1"; } }
         public override string MinLoaderVersion { get { return "1.1.0"; } }
         public override string Author { get { return "UntitledTLD"; } }
 
@@ -290,6 +290,7 @@ namespace DashboardHUD
         {
             textStyle.fontSize = Mathf.Max(6, Mathf.RoundToInt(size * S));
             textStyle.alignment = anchor;
+            GUI.color = Color.white;   // GUI.color tints text too: reset it, or the last shape's color bleeds in
             if (shadow)
             {
                 textStyle.normal.textColor = A(new Color(0, 0, 0, 0.7f));
