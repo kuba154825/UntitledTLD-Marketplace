@@ -6,7 +6,7 @@ Official mods for **UntitledTLD**, the mod loader for *The Long Drive*.
 
 You don't download anything here by hand:
 
-1. Install UntitledTLD (download in our Discord: [dsc.gg/untitledsoftware](https://dsc.gg/untitledsoftware)).
+1. Install UntitledTLD: download **UntitledTLDInstaller.exe** from the [latest UntitledTLD release here on GitHub](https://github.com/kuba154825/UntitledTLD-Marketplace/releases?q=UntitledTLD&expanded=true) or from our Discord: [dsc.gg/untitledsoftware](https://dsc.gg/untitledsoftware).
 2. Open **UntitledTLD Marketplace** (Start menu → type `UntitledTLD`).
 3. Pick a mod and click **Install**. Updates show up there and in the game by themselves.
 
