@@ -1,5 +1,0 @@
-{
-  "description": "Drives the car along the roads by itself: brakes for corners, swerves smoothly around rocks, backs up and tries again if it hits something. Can drive a registered car while you sit elsewhere. Start / stop with O or in the Manager (F10).",
-  "tags": ["driving", "vehicles", "automation"],
-  "files": [{ "from": "build/Mods/AutoDrive.dll", "path": "AutoDrive.dll" }]
-}

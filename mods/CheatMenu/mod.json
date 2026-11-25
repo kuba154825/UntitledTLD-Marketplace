@@ -1,8 +1,0 @@
-{
-  "description": "Press F2 in game for a cheat window with tabs. Spawn any item or vehicle, godmode, fly, super speed and jump, always sunrise / day / afternoon / sunset / night, day speed, moon gravity, no sandstorms, slow motion, infinite fuel, no overheating, repair / flip / bring your car, refuel nearby and fast pouring.",
-  "tags": ["cheats", "spawner", "tools"],
-  "files": [
-    { "from": "build/Mods/CheatMenu.dll", "path": "CheatMenu.dll" },
-    { "from": "build/Mods/CheatMenu/CheatMenuApp.exe", "path": "CheatMenu/CheatMenuApp.exe" }
-  ]
-}

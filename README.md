@@ -9,10 +9,11 @@ You don't download anything here by hand. Open **UntitledTLD Marketplace** (Star
 | Path | What it is |
 |---|---|
 | `index.json` | The list the Marketplace reads: every mod, its version and its files |
-| `mods/<Mod>/` | The full source code of each mod, so anyone can see what it does |
 | Releases | The built files (`.dll`, apps). One release per mod version, e.g. `autodrive-v1.0.0` |
 
 Every file in `index.json` has a SHA-256 checksum. The Marketplace checks it after downloading and refuses a file that doesn't match.
+
+The mods are plain C# and not obfuscated, so anyone who wants to see what a mod does can open its `.dll` in a .NET decompiler (dnSpy, ILSpy).
 
 ## index.json
 
@@ -28,7 +29,6 @@ Every file in `index.json` has a SHA-256 checksum. The Marketplace checks it aft
       "minLoader": "1.1.0",
       "description": "…",
       "tags": ["driving"],
-      "source": "mods/AutoDrive",
       "files": [
         { "path": "AutoDrive.dll", "url": "https://github.com/…/releases/download/autodrive-v1.0.0/AutoDrive.dll", "sha256": "…", "size": 12345 }
       ]
@@ -47,6 +47,6 @@ Mods are published with `publish.py` from the UntitledTLD source:
 2. Run `build.sh`.
 3. Run `python publish.py <this repo> kuba154825/UntitledTLD-Marketplace`.
 
-It creates the release, copies the source here and updates `index.json`. The Marketplace shows the new version within a minute.
+It creates the release and updates `index.json` (no source code is published). The Marketplace shows the new version within a minute.
 
 Only the repo's collaborators can publish. Mods are code that runs on players' PCs, so every mod here is reviewed.
