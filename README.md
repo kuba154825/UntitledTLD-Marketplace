@@ -15,6 +15,7 @@ You don't download mods by hand:
 | Mod | What it does | Source |
 |---|---|---|
 | **Cheat Menu** | F2 in game: spawner, godmode, fly, always sunrise / day / sunset / night, moon gravity, infinite fuel and more | [mods/CheatMenu](mods/CheatMenu) |
+| **Dashboard HUD** | Speed, RPM, gear, fuel, temperature, odometer and trip on screen, in 7 styles (Box, Analog, Race, Retro LCD, Neon, Minimal, Bars) | [mods/DashboardHUD](mods/DashboardHUD) |
 | **AutoDrive** | Drives your car along the roads by itself and steers around obstacles | [mods/AutoDrive](mods/AutoDrive) |
 | **Trabant Cooling** | Radiator mount for the Trabant, so swapped water-cooled engines don't overheat | [mods/TrabantCooling](mods/TrabantCooling) |
 
