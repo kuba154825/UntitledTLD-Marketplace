@@ -59,6 +59,28 @@
       ]
     },
     {
+      "id": "dashboardhud",
+      "name": "Dashboard HUD",
+      "author": "UntitledTLD",
+      "version": "1.0.0",
+      "minLoader": "1.1.0",
+      "description": "A dashboard on your screen while you drive: speed, RPM, gear, fuel, temperature, odometer and trip. 7 styles (Box, Analog, Race, Retro LCD, Neon, Minimal, Bars), with color, size, position and every readout adjustable in the Manager. F7 hides it.",
+      "tags": [
+        "hud",
+        "vehicles",
+        "ui"
+      ],
+      "source": "mods/DashboardHUD",
+      "files": [
+        {
+          "path": "DashboardHUD.dll",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/dashboardhud-v1.0.0/DashboardHUD.dll",
+          "sha256": "11e6f88612bf21509a90732ee777e6c3fff62cd6e789375474a852ab1d155122",
+          "size": 25600
+        }
+      ]
+    },
+    {
       "id": "trabantcooling",
       "name": "Trabant Cooling",
       "author": "UntitledTLD",

@@ -1,0 +1,5 @@
+{
+  "description": "A dashboard on your screen while you drive: speed, RPM, gear, fuel, temperature, odometer and trip. 7 styles (Box, Analog, Race, Retro LCD, Neon, Minimal, Bars), with color, size, position and every readout adjustable in the Manager. F7 hides it.",
+  "tags": ["hud", "vehicles", "ui"],
+  "files": [{ "from": "build/Mods/DashboardHUD.dll", "path": "DashboardHUD.dll" }]
+}
