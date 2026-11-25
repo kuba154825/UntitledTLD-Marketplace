@@ -1,0 +1,5 @@
+{
+  "description": "Adds a radiator mount above the Trabant's engine. With a radiator fitted, swapped-in water-cooled engines (car07, car11, bus) stop overheating.",
+  "tags": ["vehicles", "parts", "trabant"],
+  "files": [{ "from": "build/Mods/TrabantCooling.dll", "path": "TrabantCooling.dll" }]
+}

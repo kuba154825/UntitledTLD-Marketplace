@@ -1,5 +1,78 @@
 {
   "format": 1,
   "name": "UntitledTLD Marketplace",
-  "mods": []
+  "mods": [
+    {
+      "id": "autodrive",
+      "name": "AutoDrive",
+      "author": "UntitledTLD",
+      "version": "1.0.0",
+      "minLoader": "1.1.0",
+      "description": "Drives the car along the roads by itself: brakes for corners, swerves smoothly around rocks, backs up and tries again if it hits something. Can drive a registered car while you sit elsewhere. Start / stop with O or in the Manager (F10).",
+      "tags": [
+        "driving",
+        "vehicles",
+        "automation"
+      ],
+      "source": "mods/AutoDrive",
+      "files": [
+        {
+          "path": "AutoDrive.dll",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/autodrive-v1.0.0/AutoDrive.dll",
+          "sha256": "cf7e8f9d9822297ac83b35cc3a61582f1ce13fc805fd3b60f47fc76274886a4b",
+          "size": 38400
+        }
+      ]
+    },
+    {
+      "id": "cheatmenu",
+      "name": "Cheat Menu",
+      "author": "UntitledTLD",
+      "version": "1.0.0",
+      "minLoader": "1.1.0",
+      "description": "Press F2 in game for a separate cheat window: spawn any item or vehicle (readable names), random full vehicle, godmode, fly, refuel every engine near you and 5x faster liquid pouring.",
+      "tags": [
+        "cheats",
+        "spawner",
+        "tools"
+      ],
+      "source": "mods/CheatMenu",
+      "files": [
+        {
+          "path": "CheatMenu.dll",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.0.0/CheatMenu.dll",
+          "sha256": "00d82da749c480d814e0342b1bfbdf7598b662299cd21b7576e8c8abe4431058",
+          "size": 18432
+        },
+        {
+          "path": "CheatMenu/CheatMenuApp.exe",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.0.0/CheatMenuApp.exe",
+          "sha256": "95cd17fa3ff92af2e23ca3c6d2ffc6fbd4b3bda5e86866a17eac72932501ec59",
+          "size": 956416
+        }
+      ]
+    },
+    {
+      "id": "trabantcooling",
+      "name": "Trabant Cooling",
+      "author": "UntitledTLD",
+      "version": "1.0.0",
+      "minLoader": "1.1.0",
+      "description": "Adds a radiator mount above the Trabant's engine. With a radiator fitted, swapped-in water-cooled engines (car07, car11, bus) stop overheating.",
+      "tags": [
+        "vehicles",
+        "parts",
+        "trabant"
+      ],
+      "source": "mods/TrabantCooling",
+      "files": [
+        {
+          "path": "TrabantCooling.dll",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/trabantcooling-v1.0.0/TrabantCooling.dll",
+          "sha256": "106f95707ab4aae2d3ba2f1fcbfaa569fac5e62c75c13f95215ec05a0e4d2e8d",
+          "size": 11264
+        }
+      ]
+    }
+  ]
 }
