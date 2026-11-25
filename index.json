@@ -34,8 +34,8 @@
       "id": "cheatmenu",
       "name": "Cheat Menu",
       "author": "UntitledTLD",
-      "version": "1.1.0",
-      "minLoader": "1.1.0",
+      "version": "1.1.1",
+      "minLoader": "1.1.1",
       "description": "Press F2 in game for a cheat window with tabs. Spawn any item or vehicle, godmode, fly, super speed and jump, always sunrise / day / afternoon / sunset / night, day speed, moon gravity, no sandstorms, slow motion, infinite fuel, no overheating, repair / flip / bring your car, refuel nearby and fast pouring.",
       "tags": [
         "cheats",
@@ -46,14 +46,14 @@
       "files": [
         {
           "path": "CheatMenu.dll",
-          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.1.0/CheatMenu.dll",
-          "sha256": "c9bc1b85a4a8481617bd419a82a3ea6cb6c086a1797c9924a094440fbd9f154d",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.1.1/CheatMenu.dll",
+          "sha256": "aec09b3bf315c02b9ae4bab724b734a5a87d5550ed7e3b159e4b286c38508606",
           "size": 26112
         },
         {
           "path": "CheatMenu/CheatMenuApp.exe",
-          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.1.0/CheatMenuApp.exe",
-          "sha256": "4eeac5827c5eb11948ef97d137b67aa264b0d859c9003f9713a3cc44016d7d17",
+          "url": "https://github.com/kuba154825/UntitledTLD-Marketplace/releases/download/cheatmenu-v1.1.1/CheatMenuApp.exe",
+          "sha256": "5ff6b23ff87f837c9350eeb7c6c7868cec02dbddba50ff55b43083c4116e80f8",
           "size": 1036288
         }
       ]

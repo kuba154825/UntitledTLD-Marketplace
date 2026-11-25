@@ -25,8 +25,8 @@ namespace CheatMenu
     {
         public override string ID { get { return "cheatmenu"; } }
         public override string Name { get { return "Cheat Menu"; } }
-        public override string Version { get { return "1.1.0"; } }
-        public override string MinLoaderVersion { get { return "1.1.0"; } }
+        public override string Version { get { return "1.1.1"; } }
+        public override string MinLoaderVersion { get { return "1.1.1"; } }
         public override string Author { get { return "UntitledTLD"; } }
 
         public const int Port = 47811;
